@@ -1,0 +1,14 @@
+diff -up mnemosyne-1.1.1/mnemosyne.desktop.d mnemosyne-1.1.1/mnemosyne.desktop
+--- mnemosyne-1.1.1/mnemosyne.desktop.d	2008-09-15 20:20:01.000000000 +0200
++++ mnemosyne-1.1.1/mnemosyne.desktop	2008-11-11 18:08:16.000000000 +0100
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=Mnemosyne
+-Comment=A flash card program to make your review process more efficient
++Comment=Make your review process more efficient
+ Exec=mnemosyne %f
+ Icon=mnemosyne
+-Categories=Education
++Categories=Education;Languages;
+ Terminal=false
+ Type=Application
