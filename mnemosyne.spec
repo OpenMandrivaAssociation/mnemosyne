@@ -59,3 +59,10 @@ rm -rf %{buildroot}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
+
+
+%changelog
+* Wed Nov 16 2011 Andrey Bondrov <abondrov@mandriva.org> 1.2.2-1mdv2011.0
++ Revision: 731057
+- imported package mnemosyne
+
