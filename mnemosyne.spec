@@ -1,21 +1,22 @@
 Name:		mnemosyne
 Summary:	Flash-card learning tool
-Version:	1.2.2
-Release:	%mkrel 1
+Version:	2.2.1
+Release:	1
 URL:		http://www.mnemosyne-proj.org/
-Source0:	http://downloads.sourceforge.net/sourceforge/mnemosyne-proj/%{name}-%{version}.tgz
+Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-desktop.patch
 License:	GPLv2+
 Group:		Education
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires:	desktop-file-utils
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
 BuildArch:	noarch
 Requires:	hicolor-icon-theme
 Requires:	pygame
-Requires:	PyQt
+Requires:	python-qt4
 Requires:	python-imaging
+Requires:	python-matplotlib-qt4
+Requires:	python-cherrypy
 
 %description
 Mnemosyne resembles a traditional flash-card program but with an
@@ -26,15 +27,13 @@ Optional dependencies:
 * latex: enables entering formulas using latex syntax.
 
 %prep
-%setup -q
+%setup -q -n Mnemosyne-%{version}
 %patch0 -p1 -b .d
 
 %build
 CFLAGS="%{optflags}" %{__python} setup.py build
 
 %install
-rm -rf %{buildroot}
-
 %{__python} setup.py install -O1 --skip-build --root %{buildroot}
 
 install -d %{buildroot}%{_datadir}/applications
@@ -47,22 +46,15 @@ pushd %{buildroot}/%{_datadir}/icons
 mv %{name}.png hicolor/128x128/apps/%{name}.png
 popd
 
-%clean
-rm -rf %{buildroot}
+%find_lang %{name}
 
-%files
-%defattr(-,root,root,-)
-%doc AUTHORS ChangeLog LICENSE README
+%files -f %{name}.lang
+%doc ChangeLog README
 %{_bindir}/%{name}
+%{_bindir}/%{name}-webserver
 %{python_sitelib}/%{name}
 %{python_sitelib}/Mnemosyne-%{version}-*.egg-info
+%{python_sitelib}/openSM2sync
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
-
-
-
-%changelog
-* Wed Nov 16 2011 Andrey Bondrov <abondrov@mandriva.org> 1.2.2-1mdv2011.0
-+ Revision: 731057
-- imported package mnemosyne
 
