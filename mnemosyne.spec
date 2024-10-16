@@ -2,7 +2,7 @@ Name:		mnemosyne
 Summary:	Flash-card learning tool
 Version:	2.2.1
 Release:	2
-URL:		http://www.mnemosyne-proj.org/
+URL:		https://www.mnemosyne-proj.org/
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		%{name}-desktop.patch
 License:	GPLv2+
